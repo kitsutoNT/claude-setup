@@ -12,7 +12,7 @@ claude plugin marketplace add context-engineering-kit git:https://github.com/Neo
 echo ""
 
 # プラグインインストール
-echo "[2/2] プラグインをインストール中..."
+echo "[2/3] プラグインをインストール中..."
 
 claude plugin add superpowers@claude-plugins-official
 claude plugin add code-review@claude-plugins-official
@@ -26,6 +26,14 @@ claude plugin add claude-mem@thedotmack
 claude plugin add customaize-agent@context-engineering-kit
 claude plugin add ddd@context-engineering-kit
 claude plugin add kaizen@context-engineering-kit
+
+echo ""
+
+# ローカルスキルのコピー
+echo "[3/3] ローカルスキルをインストール中..."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+mkdir -p ~/.claude/skills
+cp -r "$SCRIPT_DIR/skills/"* ~/.claude/skills/
 
 echo ""
 echo "完了！Claude Code を再起動して反映してください。"
